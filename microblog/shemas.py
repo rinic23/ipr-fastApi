@@ -7,13 +7,17 @@ from datetime import datetime
 class PostBase(BaseModel):
     title: str
     text: str
-
-# БАЗОВЫЙ КЛАСС ПОЛЬЗОВАТЕЛЕЙ
-
-
-class PostList (PostBase):
-    date: datetime
-    id: int
+    Date: datetime
 
     class Config:
         orm_mode = True
+
+# БАЗОВЫЙ КЛАСС ПОЛУЧЕНИЯ СПИСКА ПОСТОВ
+
+
+class PostList (PostBase):
+    id: int
+
+# КЛАСС СОЗДАНИЯ ПОСТОВ
+class PostCreate(PostBase):
+    pass
