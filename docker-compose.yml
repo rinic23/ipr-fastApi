@@ -1,0 +1,17 @@
+version: '3'
+services: 
+  web:
+    build: .
+    command: uvicorn main:app --reload --host 0.0.0.0 --port 27689
+    ports:
+    - 27689:27689
+    volumes:
+    - .:/app
+    depends_on: 
+    - db   
+  db:
+    image: postgres
+    environment:
+      POSTGRES_USER: ​egor2
+      POSTGRES_PASSWORD: egor2
+      POSTGRES_DB: newDataBase 
