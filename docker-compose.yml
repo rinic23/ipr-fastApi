@@ -1,4 +1,8 @@
-version: '3'
+version: '3.1'
+networks:
+  default:
+    external:
+      name: ipr-net
 services: 
   web:
     build: .
@@ -11,7 +15,26 @@ services:
     - db   
   db:
     image: postgres
+    ports:
+    - 5432:5432
     environment:
-      POSTGRES_USER: ​egor2
-      POSTGRES_PASSWORD: egor2
-      POSTGRES_DB: newDataBase 
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+  pgAdmin:
+    image: dpage/pgadmin4
+    depends_on:
+      - db
+    ports:
+    - 16543:80
+    environment:
+      PGADMIN_DEFAULT_EMAIL: egor2@mail.ru   
+      PGADMIN_DEFAULT_PASSWORD: egor2
+      
+      
+      
+      
+# ЗАПУСК POSTGRES     
+# docker run --rm --name ipr-test --network ipr-net -p 5432:5432 -e POSTGRES_PASSWORD=developer -e POSTGRES_USER=developer -d postgres
+# ЗАПУСЕ pgAdmin
+# docker run --rm --name ipr-test-1 --network ipr-net -p 16543:80 -e 'PGADMIN_DEFAULT_EMAIL=developer@mail.ru' -e 'PGADMIN_DEFAULT_PASSWORD=developer' -d dpage/pgadmin4
