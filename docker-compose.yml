@@ -6,7 +6,7 @@ networks:
 services: 
   web:
     build: .
-    command: uvicorn main:app --reload --host 0.0.0.0 --port 27689
+    entrypoint: ['/bin/bash','./entrypoint.sh']
     ports:
     - 27689:27689
     volumes:
