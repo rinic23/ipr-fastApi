@@ -1,7 +1,5 @@
-from sqlalchemy.orm import relationship
 from core.db import Base
-from sqlalchemy import Column, String, DateTime, Integer
-from sqlalchemy.orm import relationship
+from sqlalchemy import Column, String, Integer
 # СОЗДАЁМ МОДЕЛЬ ЮЗЕРОВ
 
 

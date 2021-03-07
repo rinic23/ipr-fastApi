@@ -1,13 +1,13 @@
 from pydantic import BaseModel
-from datetime import datetime
+
 
 # БАЗОВЫЙ КЛАСС ПОСТОВ
 
 
-class PostBase(BaseModel):
-    title: str
-    text: str
-    Date: datetime
+class UserBase(BaseModel):
+    name: str
+    email: str
+    password: str
 
     class Config:
         orm_mode = True
@@ -15,13 +15,11 @@ class PostBase(BaseModel):
 # БАЗОВЫЙ КЛАСС ПОЛУЧЕНИЯ СПИСКА ПОСТОВ
 
 
-class PostList (PostBase):
+class UserList (UserBase):
     id: int
-    user: int
 
 # КЛАСС СОЗДАНИЯ ПОСТОВ
 
 
-class PostCreate(PostBase):
-    user: int
+class UserCreate(UserBase):
     pass
