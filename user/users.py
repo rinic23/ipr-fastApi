@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends
 from .shemas import UserList, UserCreate
-from .service import create_user_service, get_user_list, get_user_by_id_service
+from .service import create_user_service, get_user_list, get_user_by_id_service, update_user_by_id_service
 from sqlalchemy.orm import Session
 from core.utils import get_db
 from typing import List
@@ -21,5 +21,10 @@ def user_by_id(id: int, db: Session = Depends(get_db)):
 
 
 @router.post('/create-users')
-def post_list(post_data: UserCreate, db: Session = Depends(get_db)):
+def create_user(post_data: UserCreate, db: Session = Depends(get_db)):
     return create_user_service(post_data, db)
+
+
+@router.put('/edit-user/{id}')
+def update_user(post_data: UserCreate, id: int, db: Session = Depends(get_db)):
+    return update_user_by_id_service(post_data, db, id)
