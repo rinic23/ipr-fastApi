@@ -1,5 +1,6 @@
 from core.db import Base
 from sqlalchemy import Column, String, Integer
+from sqlalchemy.orm import relationship
 # СОЗДАЁМ МОДЕЛЬ ЮЗЕРОВ
 
 
@@ -10,3 +11,4 @@ class User(Base):
     name = Column(String)
     email = Column(String)
     password = Column(String)
+    posts = relationship("Post")

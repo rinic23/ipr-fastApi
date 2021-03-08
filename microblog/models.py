@@ -15,4 +15,3 @@ class Post(Base):
     text = Column(String)
     Date = Column(DateTime)
     user = Column(Integer, ForeignKey('user.id'))
-    use_id = relationship(User)

@@ -1,5 +1,6 @@
+from typing import List
 from pydantic import BaseModel
-
+from microblog.shemas import PostList
 
 # БАЗОВЫЙ КЛАСС ПОСТОВ
 
@@ -17,6 +18,7 @@ class UserBase(BaseModel):
 
 class UserList (UserBase):
     id: int
+    posts: List[PostList]
 
 # КЛАСС СОЗДАНИЯ ПОСТОВ
 

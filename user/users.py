@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends
 from .shemas import UserList, UserCreate
-from .service import create_user_service, get_user_list
+from .service import create_user_service, get_user_list, get_user_by_id_service
 from sqlalchemy.orm import Session
 from core.utils import get_db
 from typing import List
@@ -12,6 +12,12 @@ router = APIRouter()
 def user_list(db: Session = Depends(get_db)):
     user_list = get_user_list(db)
     return user_list
+
+
+@router.get('/get-user/{id}')
+def user_by_id(id: int, db: Session = Depends(get_db)):
+    user = get_user_by_id_service(db, id)
+    return user
 
 
 @router.post('/create-users')
